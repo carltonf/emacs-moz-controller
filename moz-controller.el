@@ -89,11 +89,14 @@ BODY: the desired JavaScript expression, as a string."
   `(defun ,name ,arglist
      ,doc
      (interactive)
+     ;; copied from `moz-save-buffer-and-send': do not print meaningless return value.
+     (comint-send-string (inferior-moz-process)
+                         (concat moz-repl-name ".pushenv('printPrompt'); "
+                                 moz-repl-name ".setenv('printPrompt', false); undefined; "))
      (comint-send-string
       (inferior-moz-process)
-      ,@body)
-     )
-  )
+      (concat ,@body ";\n"
+              moz-repl-name ".popenv('printPrompt'); undefined;\n"))))
 
 (defun-moz-controller-command moz-controller-page-refresh ()
   "Refresh current page"
