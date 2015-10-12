@@ -1,5 +1,9 @@
 #+TITLE: moz-controller: Control Firefox from Emacs
 
+[2015-10-11 Sun] Forked the original [[https://github.com/RenWenshan/emacs-moz-controller][RenWenshan/emacs-moz-controller]] to extend
+for web development purpose.
+
+----------------------------------------------------------------
 It's annoying to switch between your text editor and your web browser constantly when you're hacking and reading web pages at the time. *moz-controller* allows you to control Firefox to scroll, refresh, zoom in, zoom out, close tabs and switch tabs without leaving Emacs.
 
 [[http://youtu.be/gP-zpA4WteM][Video Demo]]
