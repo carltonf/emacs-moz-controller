@@ -103,6 +103,16 @@ BODY: the desired JavaScript expression, as a string."
   "setTimeout(function(){content.document.location.reload(true);}, '500');"
   )
 
+(defun-moz-controller-command moz-controller-web-dev-refresh (&optional port host)
+  "Refresh pages related to web development, this relies on extra
+  mozrepl init scripts getting loaded on start."
+  (let ((argstr (if port
+                    (if host (format "%d, \"%s\"" port host)
+                           (format "%d" port))
+                  "")))
+    (message "web-dev-refresh: %s" argstr)
+    (format "reloadPagesForHostPort(%s)" argstr)))
+
 (defun-moz-controller-command moz-controller-page-down ()
   "Scroll down the current window by one page."
   "content.window.scrollByPages(1);"
